@@ -8,3 +8,17 @@
 // Test.assertEquals(findShort("turns out random test cases are easier than writing out basic ones"), 3);
 // });
 
+function findShort(s){
+	var arr = s.split(' '),
+		len = arr.length,
+		min = arr[0].length,
+		i;
+
+	for(i = 0; i < len; i++){
+		if(arr[i].length < min){
+			min = arr[i].length;
+		}
+	}
+
+	return min;
+}
