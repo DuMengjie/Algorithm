@@ -1,37 +1,36 @@
 // Instructions:
-//	In this simple Kata your task is to create a function that turns a string into a Mexican Wave. You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up.
+// You and your friends want to play undercover agents. In order to exchange your secret messages, you've come up with the following system: you take the word, cut it in half, and place the first half behind the latter. If the word has an uneven number of characters, you leave the middle at its previous place:
+// That way, you'll be able to exchange your messages in private.
 //
-// 1.  The input string will always be lower case but maybe empty.
-// 2.  If the character in the string is whitespace then pass over it as if it was an empty seat.
+// Task
+// You're given a single word. Your task is to swap the halves. If the word has an uneven length, leave the character in the middle at that position and swap the chunks around it.
+//
+// Examples
+// reverseByCenter("agent") == "nteag" // center character is e
+// reverseByCenter("secret")  == "retsec" // no center character
 //
 // Test Examples
 //
-// result = ["Hello", "hEllo", "heLlo", "helLo", "hellO"];
-// Test.assertDeepEquals(wave("hello"),result, "Should return: '"+result+"'");
+// s1 = "agent"
+// s2 = "secret"
 //
-// result = ["Codewars", "cOdewars", "coDewars", "codEwars", "codeWars", "codewArs", "codewaRs", "codewarS"];
-// Test.assertDeepEquals(wave("codewars"), result, "Should return: '"+result+"'");
-//
-// result = [];
-// Test.assertDeepEquals(wave(""), result, "Should return: '"+result+"'");
-//
-// result = ["Two words", "tWo words", "twO words", "two Words", "two wOrds", "two woRds", "two worDs", "two wordS"];
-// Test.assertDeepEquals(wave("two words"), result, "Should return: '"+result+"'");
-//
-// result = [" Gap ", " gAp ", " gaP "];
-// Test.assertDeepEquals(wave(" gap "), result, "Should return: '"+result+"'");
+// Test.assertEquals(reverseByCenter(s1), "nteag")
+// Test.assertEquals(reverseByCenter(s2), "retsec")
 //
 // Best Practices
-// const wave = s => Array.from( s, (_,i) => /\s/.test(s[i]) ? null : s.slice(0,i) + s[i].toUpperCase() + s.slice(i+1) ).filter(Boolean) ;
+// function reverseByCenter(s) {
+//   var n = s.length / 2
+//   return s.slice(Math.ceil(n)) + s.slice(Math.floor(n), Math.ceil(n)) + s.slice(0, Math.floor(n))
+// }
 
-function wave(str){
-    let result = [];
+function reverseByCenter(s){
+  // ...
+  var l = s.length,
+  	  posMin = Math.floor(l / 2),
+  	  posMax = Math.ceil(l / 2),
+  	  front = s.slice(0, posMin),
+  	  back = s.slice(posMax, l),
+  	  res = s.slice(posMin, posMax);
 
-    str.split("").forEach((char, index) => {
-        if (/[a-z]/.test(char)) {
-            result.push(str.slice(0, index) + char.toUpperCase() + str.slice(index + 1));
-        }
-    });
-
-    return result;
+  return back + res + front;
 }
