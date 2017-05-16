@@ -22,12 +22,14 @@
 // })})
 //
 // Best Practices
-// function balance(left,right){
-//    l=[...left].reduce((s,a)=>s+(a=='?'?3:2),0);
-//    r=[...right].reduce((s,a)=>s+(a=='?'?3:2),0);
-//    return l==r?"Balance":l>r?"Left":"Right"
+// function tankvol(h, d, vt) {
+//   return Math.floor(((4 * vt)/(Math.pow(d, 2) * Math.PI)) *
+//    (Math.pow(d / 2, 2) * Math.acos(1 - h / (d / 2)) - ((d / 2) - h) * Math.sqrt(h * (d - h))))
 // }
 
 function tankvol(h, d, vt) {
-    // your code
+    function tankvol(h, d, vt) {
+      return Math.floor(((4 * vt)/(Math.pow(d, 2) * Math.PI)) *
+       (Math.pow(d / 2, 2) * Math.acos(1 - h / (d / 2)) - ((d / 2) - h) * Math.sqrt(h * (d - h))))
+    }
 }
